@@ -6,7 +6,12 @@
 
 int main(void){
 	
-	creer_arbre_recette();
+	
+	noeud_ingredient* n_i;
+	n_i = creer_arbre_ingredient2();
+	creer_arbre_recette(n_i);
+	
+	liberer_arbre_ingredient(&n_i);
 	
 	return EXIT_SUCCESS;
 	

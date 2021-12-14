@@ -1,4 +1,4 @@
-3|poivre|cm|
-1|lorrier|feuille|
-4|pdt|gramme|
-2|sel|g|
+12|poivre|cm|
+10|lorrier|feuille|
+18|pdt|gramme|
+11|sel|g|
