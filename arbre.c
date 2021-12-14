@@ -3,7 +3,7 @@
 #include "arbre.h"
 #include "new_string.h"
 
-noeud* creer_noeud(recette recette1){
+/*noeud* creer_noeud(recette recette1){
 	noeud *nouveau = (noeud *)malloc(sizeof(noeud));
 	if(nouveau==NULL){
 		exit(EXIT_FAILURE);
@@ -90,7 +90,4 @@ void liberer_arbre(noeud **n){
 		//printf("Effacement de la recette %s\n", (*n)->r.nom);
 		free(*n);
 	}
-	else{
-		return;
-	}
-}
+}*/

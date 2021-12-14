@@ -9,7 +9,7 @@ typedef struct Noeud{
 
 //Creer un noeud
 //param i la valeur du noeud
-noeud* creer_noeud(recette r);
+/*noeud* creer_noeud(recette r);
 
 //Affiche un noed
 //param n le noeud a afficher
@@ -33,5 +33,5 @@ recette rechercher_noeud(char *c, noeud *n);
 //param *n le noeud
 int compter_noeud(noeud *n);
 
-void liberer_arbre(noeud **n);
+void liberer_arbre(noeud **n);*/
 #endif // ARBRE_H_INCLUDED

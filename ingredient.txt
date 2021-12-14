@@ -1,0 +1,4 @@
+3|poivre|cm|
+1|lorrier|feuille|
+4|pdt|gramme|
+2|sel|g|

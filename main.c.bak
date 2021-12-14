@@ -5,9 +5,7 @@
 #include "new_string.h"
 
 int main(void){
-	
-	creer_arbre_recette();
-	
+
 	return EXIT_SUCCESS;
 	
 }
