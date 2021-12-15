@@ -2,14 +2,14 @@
 #define ARBRE_H_INCLUDED
 #include "gestion_recette.h"
 
-typedef struct Noeud{
+/*typedef struct Noeud{
     recette r;
     struct Noeud *fg, *fd;
 } noeud;
 
 //Creer un noeud
 //param i la valeur du noeud
-/*noeud* creer_noeud(recette r);
+noeud* creer_noeud(recette r);
 
 //Affiche un noed
 //param n le noeud a afficher

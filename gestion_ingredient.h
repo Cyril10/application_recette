@@ -9,11 +9,13 @@ typedef struct{
 
 typedef struct NoeudI{
     ingredient i;
-    struct NoeudI *fg, *fd;
+    struct NoeudI *fg, *fd;		//fils gauche et fils droit
 } noeud_ingredient;
 
 
 noeud_ingredient* creer_noeud_ingredient(ingredient igredient1);
+
+void ajouter_noeud_ingredient2(int id, char *nom, char *unite, noeud_ingredient **n);
 
 void afficher_noeud_ingredient(noeud_ingredient n);
 
@@ -21,14 +23,12 @@ void afficher_arbre_ingredient(noeud_ingredient *n);
 
 void afficher_arbre_ingredient2(noeud_ingredient *n,int niveau);
 
-void liberer_arbre_ingredient(noeud_ingredient **n);
-
-int compteur_ligne_fichier(FILE *fichier);
+noeud_ingredient* creer_arbre_ingredient2(void);
 
 ingredient rechercher_ingredient(noeud_ingredient *n, int id);
 
-noeud_ingredient* creer_arbre_ingredient2(void);
+void liberer_arbre_ingredient(noeud_ingredient **n);
 
-void ajouter_noeud_ingredient2(int id, char *nom, char *unite, noeud_ingredient **n);
+int compteur_ligne_fichier(FILE *fichier);
 
 #endif // GESTION_INGREDIENT_H_INCLUDED

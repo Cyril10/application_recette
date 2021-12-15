@@ -6,14 +6,29 @@ typedef struct{
 	char *nom;
 	int nb_ingredient;
 	ingredient ingre[50];
-	double qtt_ingre[50];		//la qtt a la case 0 correspond a la qtt de l'ingredient dans la case 0 du tableau ingre
+	double qtt_ingre[50];	//la qtt a la case 0 correspond a la qtt de l'ingredient dans la case 0 du tableau ingre
 	int nb_etape;
-	char *etape[10];			//permet de contenir toutes les etapes de la recette
-	int note;
+	char *etape[15];		//permet de contenir toutes les etapes de la recette
+	double note;				//note moyenne attribuer par les utilisateurs
 	int nb_personne;		//permet de definir pour combien de personne est prevu la recette
-	int difficulte;
+	int difficulte; 		//allant de 1 a 5, 1 étant facile
 }recette;
 
+typedef struct NoeudR{
+	recette r;
+	struct NoeudR *fg, *fd;		//fils gauche et fils droit
+} noeud_recette;
+
 void creer_arbre_recette(noeud_ingredient *ni);
+
+noeud_recette* creer_noeud_recette(recette r1);
+
+void ajouter_noeud_recette(recette r1, noeud_recette **n);
+
+void afficher_noeud_recette(noeud_recette n);
+
+void afficher_arbre_recette(noeud_recette *n);
+
+void afficher_arbre_recette2(noeud_recette *n, int niveau);
 
 #endif // GESTION_RECETTE_H_INCLUDED

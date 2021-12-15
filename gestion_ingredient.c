@@ -17,6 +17,30 @@ noeud_ingredient* creer_noeud_ingredient(ingredient i1){
 	}
 }
 
+//on ajoute un noeud en fonction de l'id de l'ingredient
+void ajouter_noeud_ingredient2(int id, char *nom, char *unite, noeud_ingredient **n){
+	ingredient i;
+	i.id=id;
+	
+	i.nom = (char *) calloc(strlen(nom), sizeof(char));
+	strcpy(i.nom, nom);
+	
+	i.unite = (char *) calloc(strlen(unite), sizeof(char));
+	strcpy(i.unite, unite);
+	
+	if((*n) == NULL) {
+		(*n) = creer_noeud_ingredient(i);
+	}
+	else{
+		if(i.id < (*n)->i.id){
+			ajouter_noeud_ingredient2(id, nom, unite, &(*n)->fg);
+		}
+		else{
+			ajouter_noeud_ingredient2(id, nom, unite, &(*n)->fd);
+		}
+	}
+}
+
 //permet d'afficher l'id d'un ingredient d'un noeud
 void afficher_noeud_ingredient(noeud_ingredient n){
 	printf("id de l'ingredient du noeud : %d\n", n.i.id);
@@ -34,55 +58,16 @@ void afficher_arbre_ingredient(noeud_ingredient *n){
 	}
 }
 
-int compteur_ligne_fichier(FILE *fichier){
-	int c;
-	int nb_lignes = 1;
-	while((c=fgetc(fichier)) != EOF)
-	{
-		if(c=='\n')
-			nb_lignes++;
-	}
-	return nb_lignes;
-}
-
 //Permet d'afficher les id d'ingredient comme un arbre binaire
 void afficher_arbre_ingredient2(noeud_ingredient *n,int niveau){
-    if(n){
+    if(n != NULL){
         afficher_arbre_ingredient2(n->fd, niveau+1);
         for(int i=1; i<=niveau; i++){
             printf("----");
         }
         printf("%d\n", n->i.id);
         afficher_arbre_ingredient2(n->fg, niveau+1);
-
     }
-}
-
-ingredient rechercher_ingredient(noeud_ingredient *n, int id){
-	ingredient i;
-	
-	if(n != NULL){
-		if(id < n->i.id){
-			i = rechercher_ingredient(n->fg, id);
-		}
-		else{
-			if(id > n->i.id){
-				i = rechercher_ingredient(n->fd, id);
-			}
-			else{
-				return n->i;
-			}
-		}
-		return i;
-	}
-}
-
-void liberer_arbre_ingredient(noeud_ingredient **n){
-	if(*n != NULL){
-		liberer_arbre_ingredient(&(*n)->fg);
-		liberer_arbre_ingredient(&(*n)->fd);
-		free(*n);
-	}
 }
 
 noeud_ingredient* creer_arbre_ingredient2(void){
@@ -158,25 +143,40 @@ noeud_ingredient* creer_arbre_ingredient2(void){
 	return n1;
 }
 
-void ajouter_noeud_ingredient2(int id, char *nom, char *unite, noeud_ingredient **n){
+ingredient rechercher_ingredient(noeud_ingredient *n, int id){
 	ingredient i;
-	i.id=id;
 	
-	i.nom = (char *) calloc(strlen(nom), sizeof(char));
-	strcpy(i.nom, nom);
-	
-	i.unite = (char *) calloc(strlen(unite), sizeof(char));
-	strcpy(i.unite, unite);
-	
-	if((*n) == NULL) {
-		(*n) = creer_noeud_ingredient(i);
-	}
-	else{
-		if(i.id < (*n)->i.id){
-			ajouter_noeud_ingredient2(id, nom, unite, &(*n)->fg);
+	if(n != NULL){
+		if(id < n->i.id){
+			i = rechercher_ingredient(n->fg, id);
 		}
 		else{
-			ajouter_noeud_ingredient2(id, nom, unite, &(*n)->fd);
+			if(id > n->i.id){
+				i = rechercher_ingredient(n->fd, id);
+			}
+			else{
+				return n->i;
+			}
 		}
+		return i;
 	}
+}
+
+void liberer_arbre_ingredient(noeud_ingredient **n){
+	if(*n != NULL){
+		liberer_arbre_ingredient(&(*n)->fg);
+		liberer_arbre_ingredient(&(*n)->fd);
+		free(*n);
+	}
+}
+
+int compteur_ligne_fichier(FILE *fichier){
+	int c;
+	int nb_lignes = 1;
+	while((c=fgetc(fichier)) != EOF)
+	{
+		if(c=='\n')
+			nb_lignes++;
+	}
+	return nb_lignes;
 }
