@@ -1,0 +1,7 @@
+version 1 :
+-arbre d'ingredient et arbre de recette créer a partir du fichier texte recette et du fichier texte ingredient
+-Possibilité de rechercher une recette en fonction du nom
+-Bug si mauvais nom de la recette /!\
+-Possibilité d'afficher toutes les recettes dans l'ordre alphabétique
+-Bug si on tape une phrase dans le menu /!\
+-fichier bak et exe présent dans le git pour pouvoir lancer l'application

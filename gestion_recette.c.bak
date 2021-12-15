@@ -203,7 +203,7 @@ void afficher_recette(recette r){
 	printf("Nb ingredient : %d\n", r.nb_ingredient);
 	printf("Il faut : \n");
 	for(int i = 0; i < r.nb_ingredient; i++){
-		printf("%s : %lf %s\n", r.ingre[i].nom, r.qtt_ingre[i], r.ingre[i].unite);
+		printf("%s : %d %s\n", r.ingre[i].nom, r.qtt_ingre[i], r.ingre[i].unite);
 	}
 	printf("Il y a %d etape\n", r.nb_etape);
 	for(int i = 0; i < r.nb_etape; i++){

@@ -33,7 +33,7 @@ void afficher_arbre_recette2(noeud_recette *n, int niveau);
 
 void liberer_arbre_recette(noeud_recette **n);
 
-recette rechercher_recette(char *c, noeud_recette *n);
+recette rechercher_recette(noeud_recette *n);
 
 void afficher_recette(recette r);
 

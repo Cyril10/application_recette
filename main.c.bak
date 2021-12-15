@@ -16,7 +16,6 @@ int main(void){
 	noeud_recette* n_r;
 	n_r = creer_arbre_recette(n_i);
 	
-	system("cls");
 	menu(n_i, n_r);
 	
 	liberer_arbre_recette(&n_r);

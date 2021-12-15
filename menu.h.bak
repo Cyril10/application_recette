@@ -1,0 +1,8 @@
+#ifndef MENU_H_INCLUDED
+#define MENU_H_INCLUDED
+#include "gestion_ingredient.h"
+#include "gestion_recette.h"
+
+void menu();
+
+#endif // MENU_H_INCLUDED

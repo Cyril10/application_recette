@@ -1,4 +1,7 @@
-12|poivre|cm|
-10|lorrier|feuille|
-18|pdt|gramme|
-11|sel|g|
+0|pomme de terre|unite|
+1|bouillon de volaille|cube|
+2|eau|l|
+3|gros sel|c.a.c|
+4|poivre|pincee|
+5|courge|kg|
+6|oignon|unitee|
