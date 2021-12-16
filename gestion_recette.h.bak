@@ -33,8 +33,12 @@ void afficher_arbre_recette2(noeud_recette *n, int niveau);
 
 void liberer_arbre_recette(noeud_recette **n);
 
-recette rechercher_recette(noeud_recette *n);
+recette rechercher_recette(char *c, noeud_recette *n);
 
 void afficher_recette(recette r);
+
+void recopier_arbre_dans_fichier_recette(noeud_recette *n, FILE *f_recette);
+
+void rajouter_recette(noeud_ingredient *n_i, noeud_recette **n_r);
 
 #endif // GESTION_RECETTE_H_INCLUDED

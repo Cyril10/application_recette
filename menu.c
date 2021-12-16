@@ -14,6 +14,7 @@ void menu(noeud_ingredient* n_i, noeud_recette* n_r){
 		printf("----------------------------------------------------------\n");
 		printf("1 : Afficher toutes les recettes dans l'ordre alphabetique\n");
 		printf("2 : Afficher une recette selon son nom\n");
+		printf("3 : Rajouter une recette\n");
 		printf("0 : Quitter le menu\n");
 		printf("----------------------------------------------------------\n");
 		printf("Quel est votre choix : ");
@@ -59,6 +60,19 @@ void menu(noeud_ingredient* n_i, noeud_recette* n_r){
 				temp1 = '\0';
 				system("cls");
 				break;
+				
+			case 3 :
+				//on affiche tous les ingredients car on a besoin de l'id de l'ingredient pour pouvoir le rajouter
+				afficher_arbre_ingredient(n_i);
+				
+				rajouter_recette(n_i, &n_r);
+				
+				FILE *f_recette = NULL;
+				f_recette = fopen("recette.txt", "r+");
+				recopier_arbre_dans_fichier_recette(n_r, f_recette);
+				fclose(f_recette);
+				
+				system("cls");
 				
 			case 0 :
 				printf("Vous avez quitte le menu\n");

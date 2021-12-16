@@ -16,7 +16,17 @@ int main(void){
 	noeud_recette* n_r;
 	n_r = creer_arbre_recette(n_i);
 	
-	menu(n_i, n_r);
+	//system("cls");
+	//menu(n_i, n_r);
+	
+	afficher_arbre_ingredient(n_i);
+	
+	rajouter_recette(n_i, &n_r);
+	
+	FILE *f_recette = NULL;
+	f_recette = fopen("recette.txt", "r+");
+	recopier_arbre_dans_fichier_recette(n_r, f_recette);
+	fclose(f_recette);
 	
 	liberer_arbre_recette(&n_r);
 	liberer_arbre_ingredient(&n_i);
@@ -24,11 +34,9 @@ int main(void){
 	
 }
 
-/*test
-	afficher_arbre_recette(n_r);
+/*FILE *f_recette = NULL;
+	f_recette = fopen("recette.txt", "r+");
 	
-	char c[20]="Soupe de courge";
-	recette r;
-	r = rechercher_recette(c, n_r);
+	recopier_arbre_dans_fichier_recette(n_r, f_recette);
 	
-	afficher_recette(r);*/
+	fclose(f_recette);*/

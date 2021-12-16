@@ -25,11 +25,9 @@ int main(void){
 	
 }
 
-/*test
-	afficher_arbre_recette(n_r);
+/*FILE *f_recette = NULL;
+	f_recette = fopen("recette.txt", "r+");
 	
-	char c[20]="Soupe de courge";
-	recette r;
-	r = rechercher_recette(c, n_r);
+	recopier_arbre_dans_fichier_recette(n_r, f_recette);
 	
-	afficher_recette(r);*/
+	fclose(f_recette);*/

@@ -214,3 +214,77 @@ void afficher_recette(recette r){
 	printf("Difficulte : %d\n", r.difficulte);
 	printf("--------------------\n");
 }
+
+//permet de recopier toutes les recettes de l'arbre dans le fichier texte recette
+void recopier_arbre_dans_fichier_recette(noeud_recette *n, FILE *f_recette){
+	if(n != NULL){
+		recopier_arbre_dans_fichier_recette(n->fg, f_recette);
+		
+		fprintf(f_recette, "%s|%d|", n->r.nom, n->r.nb_ingredient);
+		for(int i = 0; i < n->r.nb_ingredient; i++){
+			fprintf(f_recette, "%d|%lf|", n->r.ingre[i].id, n->r.qtt_ingre[i]);
+		}
+		fprintf(f_recette, "%d|", n->r.nb_etape);
+		for(int i = 0; i < n->r.nb_etape; i++){
+			fprintf(f_recette, "%s|", n->r.etape[i]);
+		}
+		fprintf(f_recette, "%lf|%d|%d\n", n->r.note, n->r.nb_personne, n->r.difficulte);
+		
+		recopier_arbre_dans_fichier_recette(n->fd, f_recette);
+	}
+}
+
+void rajouter_recette(noeud_ingredient *n_i, noeud_recette **n_r){
+	recette r;
+	
+	printf("CREATION D'UNE NOUVELLE RECETTE\n");
+	
+	printf("nom  : ");
+	r.nom = lecture();
+	
+	printf("\nnombre d'ingredient : ");
+	scanf("%d", &r.nb_ingredient);
+	getchar();
+	printf("\n");
+	
+	for(int i = 0; i < r.nb_ingredient; i++){
+		int id_ingredient_temp;
+		printf("id de l'ingredient %d : ", i);
+		scanf("%d", &id_ingredient_temp);
+		getchar();
+		printf("\n");
+		
+		ingredient i_temp = rechercher_ingredient(n_i, id_ingredient_temp);
+		r.ingre[i] = i_temp;
+		
+		double qtt_ingredient_temp;
+		printf("quantite de l'ingredient %s en %s : ", r.ingre[i].nom, r.ingre[i].unite);
+		scanf("%lf", &r.qtt_ingre[i]);
+		getchar();
+		printf("\n");
+	}
+	
+	printf("nombre d'etape : ");
+	scanf("%d", &r.nb_etape);
+	getchar();
+	printf("\n");
+	
+	for(int i = 0; i < r.nb_etape; i++){
+		printf("etape %d : ", i+1);
+		r.etape[i] = lecture();
+	}
+	
+	printf("\nnote : ");
+	scanf("%lf", &r.note);
+	printf("\n");
+	
+	printf("pour combien de personne : ");
+	scanf("%d", &r.nb_personne);
+	printf("\n"); 
+	
+	printf("difficulte : ");
+	scanf("%d", &r.difficulte);
+	printf("\n");
+	
+	ajouter_noeud_recette(r, n_r);
+}

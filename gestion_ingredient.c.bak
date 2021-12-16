@@ -46,7 +46,6 @@ void afficher_noeud_ingredient(noeud_ingredient n){
 	printf("id de l'ingredient du noeud : %d\n", n.i.id);
 	printf("nom de l'ingredient du noeud : %s\n", n.i.nom);
 	printf("nom de l'unite du noeud : %s\n", n.i.unite);
-	printf("---------------------------------");
 }
 
 //permet d'afficher tous les ingredients de l'arbre complet

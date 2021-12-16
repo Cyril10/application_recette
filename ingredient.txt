@@ -5,3 +5,13 @@
 4|poivre|pincee|
 5|courge|kg|
 6|oignon|unitee|
+7|tortillas|unite|
+8|jambon de parme|tranche|
+9|buche de chebre|unite|
+10|oignon rouge|unite|
+11|courgette|unite|
+12|farine|g|
+13|basilic|feuille|
+14|sel|pincee|
+15|oeuf|unite|
+16|kiri|porition|
