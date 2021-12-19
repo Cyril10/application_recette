@@ -5,8 +5,8 @@
 #include "new_string.h"
 
 int menu(noeud_ingredient* n_i, noeud_recette** n_r){
-	char temp1='\0', *temp;
-	char *temp2;
+	char temp1='\0';
+	char *temp2, *temp;
 	int choix=-1;
 	int recopier_dans_fichier_texte = 0; 	//permet de savoir si on doit recopier l'arbre de recette dans le fichier texte
 											//0 pour non et 1 pour oui

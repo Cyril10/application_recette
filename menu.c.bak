@@ -5,7 +5,7 @@
 #include "new_string.h"
 
 int menu(noeud_ingredient* n_i, noeud_recette** n_r){
-	char temp1='\0', *temp;
+	char temp1='\0';
 	char *temp2;
 	int choix=-1;
 	int recopier_dans_fichier_texte = 0; 	//permet de savoir si on doit recopier l'arbre de recette dans le fichier texte
@@ -79,6 +79,7 @@ int menu(noeud_ingredient* n_i, noeud_recette** n_r){
 				system("cls");
 				
 			case 4 :
+				char *temp;
 				//on affiche les recettes pour avoir les noms exacte
 				afficher_arbre_recette(*n_r);
 				
@@ -109,7 +110,7 @@ int menu(noeud_ingredient* n_i, noeud_recette** n_r){
 				printf("Quelle recette voulez-vous modifier?\n");
 				
 				temp = lecture();
-				
+				printf("\n");
 				modifier_recette(n_r, temp);
 				
 				recopier_dans_fichier_texte = 1;
