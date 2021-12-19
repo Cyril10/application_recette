@@ -41,4 +41,10 @@ void recopier_arbre_dans_fichier_recette(noeud_recette *n, FILE *f_recette);
 
 void rajouter_recette(noeud_ingredient *n_i, noeud_recette **n_r);
 
+noeud_recette* sortir_plus_grand(noeud_recette **n_r);
+
+void supprimer_recette(noeud_recette **n_r, char *c);
+
+void modifier_recette(noeud_recette **n_r, char *c);
+
 #endif // GESTION_RECETTE_H_INCLUDED

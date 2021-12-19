@@ -1,3 +1,8 @@
+version 1.5:
+-ajout de la fonction modification de recette
+-ajout de la fonction suppression de recette
+-ajout de la fonction ajout de recette
+
 version 1 :
 -arbre d'ingredient et arbre de recette créer a partir du fichier texte recette et du fichier texte ingredient
 -Possibilité de rechercher une recette en fonction du nom

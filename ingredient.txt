@@ -15,3 +15,8 @@
 14|sel|pincee|
 15|oeuf|unite|
 16|kiri|porition|
+17|pate|gramme|
+18|creme fraiche|cl|
+19|jaune d'oeuf|unite|
+20|lardon|gramme|
+

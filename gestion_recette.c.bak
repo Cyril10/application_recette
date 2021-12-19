@@ -24,7 +24,7 @@ void ajouter_noeud_recette(recette r1, noeud_recette **n){
 		(*n) = creer_noeud_recette(r1);
 	}
 	else{
-		if(strcmp(r1.nom, ((*n)->r.nom))==1){		//on considere que l'ordre ce fait selon l'ordre ASCII des caractere ex : a<b
+		if(strcmp(r1.nom, ((*n)->r.nom)) > 0){		//on considere que l'ordre ce fait selon l'ordre ASCII des caractere ex : a<b
 			ajouter_noeud_recette(r1, &(*n)->fd);
 		}
 		else{
@@ -209,9 +209,9 @@ void afficher_recette(recette r){
 	for(int i = 0; i < r.nb_etape; i++){
 		printf("etape %d : %s\n", i, r.etape[i]);
 	}
-	printf("Note : %lf\n", r.note);
+	printf("Note : %lf / 5\n", r.note);
 	printf("Pour %d personne\n", r.nb_personne);
-	printf("Difficulte : %d\n", r.difficulte);
+	printf("Difficulte : %d / 5\n", r.difficulte);
 	printf("--------------------\n");
 }
 
@@ -287,4 +287,118 @@ void rajouter_recette(noeud_ingredient *n_i, noeud_recette **n_r){
 	printf("\n");
 	
 	ajouter_noeud_recette(r, n_r);
+}
+
+noeud_recette* sortir_plus_grand(noeud_recette **n_r){
+	noeud_recette *temp = NULL;
+	if(*n_r != NULL){
+		if((*n_r)->fd != NULL){
+			return sortir_plus_grand(&(*n_r)->fd);
+		}
+		else{
+			temp = (*n_r);
+			(*n_r) = (*n_r)->fd;
+			return temp;
+		}
+	}
+}
+
+void supprimer_recette(noeud_recette **n_r, char *c){
+	if(n_r != NULL){
+		if(strcmp(c, ((*n_r)->r.nom)) < 0){
+			supprimer_recette(&(*n_r)->fg, c);
+		}
+		else {
+			if(strcmp(c, ((*n_r)->r.nom)) > 0){
+				supprimer_recette(&(*n_r)->fd, c);
+			}
+			else{
+				noeud_recette *temp = *n_r;
+				if((*n_r)->fg == NULL){
+					*n_r = (*n_r)->fd;
+				}
+				else{
+					if ((*n_r)->fd == NULL){
+						*n_r = (*n_r)->fg;
+					}
+					else{
+						noeud_recette *temp2 = sortir_plus_grand(&(*n_r)->fg);
+						temp2->fd = (*n_r)->fd;
+						temp2->fg = (*n_r)->fg;
+						*n_r = temp2;
+					}
+				}
+			free(temp);
+			}
+		}
+	}
+}
+	
+void modifier_recette(noeud_recette **n_r, char *c){
+	if(n_r != NULL){
+		if(strcmp(c, (*n_r)->r.nom) < 0){
+			modifier_recette(&(*n_r)->fg, c);
+		}
+		if(strcmp(c,(*n_r)->r.nom) > 0){
+			modifier_recette(&(*n_r)->fd, c);
+		}
+		if(strcmp(c, (*n_r)->r.nom) == 0){
+			int choix = -1;
+			while (choix != 0){
+				printf("Que voulez vous modifier ? \n");
+				printf("1 - Le nom de la recette\n");
+				printf("2 - La note\n");
+				printf("3 - Le nombre de personne pour laquelle la recette est prevu\n");
+				printf("4 - La difficulte de la recette\n");
+				printf("0 - Revenir au menu principal\n");
+				printf("Quel est votre choix : ");
+				
+				scanf("%d", &choix);
+				getchar();
+				
+				system("cls");
+				
+				switch(choix){
+					case 1 :
+						printf("Nouveau nom de recette : ");
+						(*n_r)->r.nom = NULL;
+						(*n_r)->r.nom = lecture();
+						
+						printf("\nLe nouveau nom de la recette est : %s\n", (*n_r)->r.nom);
+						break;
+					case 2 :
+						printf("Nouvelle note : ");
+						
+						scanf("%lf", &(*n_r)->r.note);
+						getchar();
+						
+						printf("\nLa nouvelle note de la recette est : %lf\n", (*n_r)->r.note);
+						break;
+					case 3 :
+						printf("Nouveau nombre de personne prevu pour la recette : ");
+						
+						scanf("%d", &(*n_r)->r.nb_personne);
+						getchar();
+						
+						printf("\nLe nouveau nombre de personne est : %d\n", (*n_r)->r.nb_personne);
+						break;
+						
+					case 4 :
+						printf("Nouvelle difficulte : ");
+						
+						scanf("%d", &(*n_r)->r.difficulte);
+						getchar();
+						
+						printf("\nLa nouvelle difficulte de la recette est : %d\n", (*n_r)->r.difficulte);
+						break;
+					
+					case 0 :
+						break;
+					
+					default :
+						printf("Erreur lors de la saisie, resaisir\n");
+				}
+			}
+		}
+	}
 }
